@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}
+      %title SimpleApp
+      = stylesheet_link_tag 'application'
+      = javascript_include_tag "application"
+      = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{:href => '/'}
+            CRUD
+          %ul.nav
+            %li{:data => {"foreach-nav" => "window.SimpleApp.navLinks", "addclass-active" => "window.SimpleApp.currentRoute.controller | matches nav.controller"}}
+              %a{:data => {"bind" => "nav.text", "bind-href" => "nav.href"}}
+    #main.container
+      .content
+        %p#flashnotice.alert.alert-success{:data => {"showif" => "window.SimpleApp.flash.success.length"}}
+          %a.close{:href => "#", :onclick => "$('#flashnotice').hide(); return false"} ×
+          %span{:data => {"bind" => "window.SimpleApp.flash.success"}}
+        %p#flashwarning.alert.alert-error{:data => {"showif" => "window.SimpleApp.flash.error.length"}}
+          %a.close{:href => "#", :onclick => "$('#flashwarning').hide(); return false"} ×
+          %span{:data => {"bind" => "window.SimpleApp.flash.error"}}
+        %div{:data => {"yield" => "main"}}
+        %footer
+          %p
+            &copy; zhubert #{Time.now.year}
