@@ -8,6 +8,8 @@ class SimpleApp.Comment extends Batman.Model
 
   # fields
   @encode "content", "id", "post_id"
+  @encode "created_at", Batman.Encoders.railsDate
+  @encode "updated_at", Batman.Encoders.railsDate
 
   # validations
   @validate "content", presence: true
