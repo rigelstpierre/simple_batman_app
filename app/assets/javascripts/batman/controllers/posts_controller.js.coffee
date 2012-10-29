@@ -1,13 +1,18 @@
 class SimpleApp.PostsController extends Batman.Controller
   routingKey: 'posts'
 
+  logErrors: (err) ->
+    console?.log('Error: ', err)
+
+  @catchError Batman.StorageAdapter.StorageError, with: @::logErrors
+
   index: (params) ->
-    SimpleApp.Post.load (err,results) =>
+    SimpleApp.Post.load @errorHandler (results) =>
       @set 'posts', results
 
   show: (params) ->
-    @set 'post', SimpleApp.Post.find parseInt(params.id, 10), (err) ->
-      throw err if err
+    SimpleApp.Post.find params.id, @errorHandler (result) =>
+      @set 'post', result
 
     @render source: 'posts/show'
 
