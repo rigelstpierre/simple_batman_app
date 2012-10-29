@@ -22,9 +22,9 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.0.1'
 end
 
-#gem 'quiet_assets'
+# shhhhhh....
+gem 'quiet_assets'
+gem 'thin' # to get rid of the content-length warn
 
 # fake up some data
 gem 'ffaker', '1.15.0'
-
-gem 'thin'

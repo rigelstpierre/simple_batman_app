@@ -5,6 +5,9 @@ window.SimpleApp = class SimpleApp extends Batman.App
   # changed again!
   Batman.config.viewPrefix = 'assets/batman/views'
 
+  # get rid of DOM flicker
+  Batman.DOM.Yield.clearAllStale = -> {}
+
   @navLinks: [
     {href: "/#!/posts/", controller: "posts", text: "Posts"}
   ]
