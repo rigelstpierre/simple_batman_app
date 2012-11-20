@@ -8,9 +8,8 @@ window.SimpleApp = class SimpleApp extends Batman.App
   # get rid of DOM flicker
   Batman.DOM.Yield.clearAllStale = -> {}
 
-  @navLinks: [
-    {href: "/#!/posts/", controller: "posts", text: "Posts"}
-  ]
+  Batman.config.usePushState = yes
+  Batman.config.pathPrefix = '/'
 
   @resources 'posts', ->
     @resources 'comments'

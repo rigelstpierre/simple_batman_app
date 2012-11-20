@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     respond_to do |format|
+      format.html { render :layout => 'application', :template => 'main/index'} # pushState
       format.json { render :json => @posts.as_json }
     end
   end
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     respond_to do |format|
+      format.html { render :layout => 'application', :template => 'main/index'} # pushState
       format.json { render :json => @post.as_json }
     end
   end
