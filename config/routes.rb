@@ -4,6 +4,7 @@ SimpleApp::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :attachments
   end
 
   root :to => 'main#index'

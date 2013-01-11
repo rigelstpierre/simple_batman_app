@@ -7,6 +7,9 @@ gem 'rails', '~> 3.2'
 # data
 gem 'sqlite3'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 # server/client side HAML templates
 gem 'haml-rails', '~> 0.3'
 gem 'haml_assets', '0.1.0'
